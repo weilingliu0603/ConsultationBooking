@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<link rel = "stylesheet" href = "{{ url_for('static',filename = 'StyleSheet.css')}}">
+	</head>
+<h1>H2 Computing Consultation Booking</h1>
+<p>
+<form action = "{{ url_for('processing') }}" method="POST">
+	<table>
+			<tr>
+				<th>Slot ID</p></th>
+				<th>Student Name</p></th>			
+			</tr>
+			<tr>
+				<td>
+					<input name = "slotID">
+				</td>
+				<td>
+					<label for="name">Choose your name:</label>
+					<select id="name" name="name">
+					{% for name in lst_names %}
+					<option value="{{ name }}">{{ name }}</option>
+					{% endfor %}
+					</select>
+				</td>				
+			</tr>
+
+	</table>
+	<br>
+	<input type = "submit" value = "SUBMIT">
+
+</form>
+<p>
+	<table border = "1">
+		<tr>
+		<td>
+			<table border = "1">
+			<h2>Available Slots</h2>
+			<tr>
+			<th>Slot ID</th>
+			<th>Date</th>
+			<th>Start Time</th>
+			<th>Tutor</th>
+			</tr>		
+		
+			{% for item in lst_available %}
+			<tr>
+			<td>{{ item[0] }}</td>
+			<td>{{ item[1] }}</td>
+			<td>{{ item[2] }}</td>
+			<td>{{ item[3] }}</td>	
+			</tr>
+			{% endfor %}
+			</table>
+		</td>
+		<td>
+			<table border = "1">
+			<h2>Booked Slots</h2>
+			<tr>
+			<th>Slot ID</th>
+			<th>Date</th>
+			<th>Start Time</th>
+			<th>Tutor</th>
+			<th>Student</th>
+			</tr>		
+		
+			{% for item in lst_booked %}
+			<tr>
+			<td>{{ item[0] }}</td>
+			<td>{{ item[1] }}</td>
+			<td>{{ item[2] }}</td>
+			<td>{{ item[3] }}</td>	
+			<td>{{ item[4] }}</td>
+			</tr>
+			{% endfor %}
+		
+			</table>
+		</td>
+		<td>
+		<h2>Guidelines</h2>
+		
+		1. <b>Submit booking at least 48 hours in advance.</b><br>
+		2. <b>Text Ms Liu to cancel booking at least 24 hours in advance.</b><br>
+		3. Each student to book at most two slots.<br>
+		4. Up to 4 students may attend (i.e: the student booking plus three other friends).<br>
+		5. The duration of each slot is an hour. Extension determined upon request.<br>
+		6. The consultation will be held in school. Room venue to be advised.<br>
+		7. NoSQL - Mr Ng; Web app and SQL - Ms Liu<br>
+		</tr>
+	</table>
+</html>

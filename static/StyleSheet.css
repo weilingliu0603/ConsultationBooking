@@ -1,0 +1,16 @@
+body {background-color: #F0F0F0;}
+h1   {color: #383838;}
+h2   {color: pink;}
+p    {color: black;
+	  font-size: 24px
+	 }
+
+img  {
+	width: 80%
+}
+
+table, th, td, tr {
+	vertical-align: top
+}
+
+
